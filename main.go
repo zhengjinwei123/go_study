@@ -114,4 +114,13 @@ func main() {
 	for i,c := range "go" {
 		fmt.Println(i,c)
 	}
+
+
+	var k mypath.K = 1
+	d := mypath.KToC(k)
+	fmt.Println(d)
+
+	var c0 mypath.C = 1
+	k0 := mypath.CToK(c0)
+	fmt.Println(k0)
 }
