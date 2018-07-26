@@ -1,153 +1,143 @@
 package main
 
 import (
+	"mypath"
 	"fmt"
+	"goroute"
+	"time"
+	"math/rand"
 )
 
-//func divide(divident int, divisor int) (result int, err error) {
-//	if divisor == 0 {
-//		err = errors.New("devision by zero")
-//		return
-//	}
-//	result = divident / divisor
-//	return
-//}
-//
-//
+
+
+func modify(a int){
+	a = 10
+	return
+}
+
+func modify1(a *int){
+	*a = 10
+}
+
+
+func swap(a *int,b *int) {
+	tmp := *a
+	*a = *b
+	*b = tmp
+	return
+}
+
+func swap1(a int, b int) (int,int){
+	return b,a
+}
+
+
+const (
+	Man = 1
+	Female = 2
+)
+
+func init() {
+	rand.Seed(time.Now().UnixNano())
+}
 
 
 func main() {
-	//fmt.Println("hello world")
-	//x := mypath.Sqrt(100)
-	//fmt.Println(x)
-	//
-	//var a [5]int
-	//fmt.Println(a)
-	//
-	//a[4] = 100
-	//fmt.Println("set", a)
-	//fmt.Println("get", a[4])
-	//
-	//fmt.Println(len(a))
-	//
-	//b := [5]int{1, 2, 3, 4, 6}
-	//fmt.Println(b)
-	//
-	//var two [2][3]int;
-	//for i := 0; i < 2; i++ {
-	//	for j := 0; j < 3; j++ {
-	//		two[i][j] = i + j
-	//	}
-	//}
-	//
-	//fmt.Println(two)
-	//
-	//// 切片
-	//s := make([]string, 3)
-	//fmt.Println(s)
-	//
-	//s[0] = "a"
-	//s[1] = "b"
-	//s[2] = "c"
-	//
-	//fmt.Println(s)
-	//
-	//fmt.Println(len(s))
-	//
-	//s = append(s, "d")
-	//s = append(s, "e", "f", "g")
-	//fmt.Println(s)
-	//
-	//c := make([]string, len(s))
-	//copy(c, s)
-	//fmt.Println(c)
-	//
-	//l := s[2:5]
-	//fmt.Println(l)
-	//
-	//l1 := s[:5]
-	//fmt.Println(l1)
-	//
-	//l2 := []string{"g", "h", "j"}
-	//fmt.Println(l2)
-	//
-	//l3 := make([][]int, 3)
-	//for i := 0; i < 3; i++ {
-	//	innerLen := i + 1
-	//	l3[i] = make([]int, innerLen)
-	//	for j := 0; j < innerLen; j++ {
-	//		l3[i][j] = j + j
-	//	}
-	//}
-	//fmt.Println(l3)
-	//
-	//// 关联数组
-	//m := make(map[string]int)
-	//
-	//m["k1"] = 1
-	//m["k2"] = 2
-	//
-	//fmt.Println(m["k1"])
-	//
-	//delete(m, "k1")
-	//fmt.Println(m)
-	//
-	//jj, prs := m["k2"]
-	//fmt.Println("prs", prs, jj)
-	//
-	//n := map[string]int{"f": 1, "g": 2}
-	//fmt.Println(n)
-	//
-	//nums := []int{1, 2, 3, 4, 5}
-	//sum := 0
-	//for i, n := range nums {
-	//	fmt.Println(i, n)
-	//	sum += n
-	//}
-	//
-	//fmt.Println(sum)
-	//
-	//kvs := map[string]string{"a":"apple","b":"banana"}
-	//for k,v := range kvs {
-	//	fmt.Printf("%s->%s \r\n",k,v)
-	//}
-	//
-	//for i,c := range "go" {
-	//	fmt.Println(i,c)
-	//}
-	//
-	//
-	//var k mypath.K = 1
-	//d := mypath.KToC(k)
-	//fmt.Println(d)
-	//
-	//var c0 mypath.C = 1
-	//k0 := mypath.CToK(c0)
-	//fmt.Println(k0)
+	sum,_ := mypath.Add(100,300)
+	fmt.Println(sum)
 
 
-	//http.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
-	//	fmt.Fprintf(writer,"<h1>hello world:%s</h1>",request.FormValue("name"))
-	//})
-	//
-	//http.ListenAndServe(":8888",nil)
+	var pipe chan int
+	pipe = make(chan int,1)
+	go goroute.Add(1,100,pipe)
 
-	ch := make(chan string)
-	for i:= 0 ;i < 5;i++{
-		go printHelloWorld(i,ch)
+	sum2 := <- pipe
+
+	fmt.Println(sum2)
+
+
+	a := 5
+	b := make(chan int,1)
+
+	fmt.Println("a=",a)
+	fmt.Println("b=",b)
+
+	modify(a)
+	fmt.Println("a=",a)
+	modify1(&a)
+	fmt.Println("a=",a)
+
+	first := 100
+	second := 200
+
+	swap(&first,&second)
+
+	fmt.Println(first,second)
+
+	first,second = swap1(first,second)
+
+	fmt.Println(first,second)
+
+	first,second = second,first
+
+	fmt.Println(first,second)
+
+	fmt.Println("------------------------------")
+
+	now := time.Now()
+	second1 := now.Unix()
+
+	if second1 % Female == 0{
+		fmt.Println("female")
+	}else{
+		fmt.Println("man")
 	}
 
-	for{
-		msg := <- ch
-		fmt.Println(msg)
+	fmt.Println("---------rand.Int")
+	for i:=0 ; i < 10; i++{
+		a := rand.Int()
+		fmt.Println(a)
 	}
 
-	//time.Sleep(time.Second)
-}
-
-func printHelloWorld(i int,ch chan string){
-	for {
-		ch <- fmt.Sprintf("hellow world %d!\n",i)
+	fmt.Println("---------rand.Intn")
+	for i :=0 ;i <10;i++{
+		a := rand.Intn(100)
+		fmt.Println(a)
 	}
 
+	fmt.Println("---------rand.float32")
+	for i :=0 ;i <10;i++{
+		a := rand.Float32()
+		fmt.Println(a)
+	}
+
+	//var arr [5] int = [5]int {1,2,3,4,5}
+
+	var arr1 = [5]int{1,2,3}
+
+	for k,v := range arr1 {
+		fmt.Println(k,v)
+	}
+
+	var arr2 = [5]int{1}
+	fmt.Println(len(arr2))
+
+	var arr3 = [5]string{1:`zjw`,3:"jahaaa"}
+
+
+	for i := 0; i< len(arr3);i++{
+		fmt.Println(i,arr3[i])
+	}
+
+	for k,v := range arr3 {
+		fmt.Println(k,v)
+	}
+
+	var arr4 = [...]int{1,3,2,3}
+	arr4[0] = 2
+	arr4[1] = 3
+	arr4[2] = 4
+	for k,v := range arr4 {
+		fmt.Println(k,v)
+	}
 }
