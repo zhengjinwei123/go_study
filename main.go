@@ -7,6 +7,7 @@ import (
 	"time"
 	"math/rand"
 	"unicode/utf8"
+	"sort"
 )
 
 func modify(a int) {
@@ -49,19 +50,19 @@ func Sum(b []int) int {
 }
 
 func testSliceCap() {
-	a := make([]int,5,10)
+	a := make([]int, 5, 10)
 	a[0] = 11
 	a[1] = 12
 	a[2] = 13
 
-	a = append(a,1)
-	a = append(a,2)
-	a = append(a,3)
+	a = append(a, 1)
+	a = append(a, 2)
+	a = append(a, 3)
 	a[4] = 100
 	b := a[1:3]
 
-	fmt.Println("a=%#v,len(a) = %d,cap(a) = %d \n",a,len(a),cap(a))
-	fmt.Println("b=%#v,len(b) = %d,cap(b) = %d \n",b,len(b),cap(b))
+	fmt.Println("a=%#v,len(a) = %d,cap(a) = %d \n", a, len(a), cap(a))
+	fmt.Println("b=%#v,len(b) = %d,cap(b) = %d \n", b, len(b), cap(b))
 }
 
 func main() {
@@ -160,30 +161,30 @@ func main() {
 		fmt.Println(k, v)
 	}
 
-	sl := make([]int,10)
+	sl := make([]int, 10)
 	sl[0] = 1
 	sl[1] = 2
 	sl[2] = 3
 	sl[3] = 4
 
-	fmt.Println("sum slice",Sum(sl),len(sl))
+	fmt.Println("sum slice", Sum(sl), len(sl))
 
 	testSliceCap()
 
-	s1 := []int{1,2,3,4}
-	s2 := make([]int,10)
+	s1 := []int{1, 2, 3, 4}
+	s2 := make([]int, 10)
 
-	copy(s2,s1)
+	copy(s2, s1)
 
 	fmt.Println(s2)
 
 	var s3 [] int
-	s3 = make([]int,5)
-	var s4 []int = []int{10,11,13,24}
+	s3 = make([]int, 5)
+	var s4 []int = []int{10, 11, 13, 24}
 
-	s3 = append(s3,1,1,2,3,4,5,6)
-	s3 = append(s3,s4...)
-	fmt.Printf("zjw s3:%#v \n",s3)
+	s3 = append(s3, 1, 1, 2, 3, 4, 5, 6)
+	s3 = append(s3, s4...)
+	fmt.Printf("zjw s3:%#v \n", s3)
 
 	//-----------字符串---------------
 	var str = "hello world"
@@ -193,16 +194,12 @@ func main() {
 
 	fmt.Println(str1)
 
-
-
-
-
 	str11 := "hello world"
 
 	b11 := []byte(str11)
 
-	for i :=0 ;i < len(b11)/2;i++{
-		b11[i],b11[len(b11)-i-1] = b11[len(b11)-i-1],b11[i]
+	for i := 0; i < len(b11)/2; i++ {
+		b11[i], b11[len(b11)-i-1] = b11[len(b11)-i-1], b11[i]
 	}
 
 	fmt.Println(string(b11))
@@ -210,41 +207,141 @@ func main() {
 	str12 := "hello wolrd我们爱中国"
 	b12 := []rune(str12)
 
-	for i :=0 ;i < len(b12)/2;i++{
-		b12[i],b12[len(b12)-i-1] = b12[len(b12)-i-1],b12[i]
+	for i := 0; i < len(b12)/2; i++ {
+		b12[i], b12[len(b12)-i-1] = b12[len(b12)-i-1], b12[i]
 	}
 
 	str13 := string(b12)
 	fmt.Println(str13)
 
-	fmt.Printf("len(str12) = %d,len(rune) = %d ,len(char count) = %d \n",len(str12),len(str13),len([]rune(str12)))
+	fmt.Printf("len(str12) = %d,len(rune) = %d ,len(char count) = %d \n", len(str12), len(str13), len([]rune(str12)))
 
-	fmt.Printf("runeCountInString = %d",utf8.RuneCountInString(str12))
+	fmt.Printf("runeCountInString = %d", utf8.RuneCountInString(str12))
 
-
-	for{
+	for {
 
 		start := time.Now().UnixNano()
 		now := time.Now()
-		fmt.Printf("type of now is:%T \n",now)
+		fmt.Printf("type of now is:%T \n", now)
 
 		year := now.Year()
 		month := now.Month()
 		day := now.Day()
 
-		str := fmt.Sprintf("%04d-%02d-%02d %02d:%02d:%02d \n",year,month,day,now.Hour(),now.Minute(),now.Second())
+		str := fmt.Sprintf("%04d-%02d-%02d %02d:%02d:%02d \n", year, month, day, now.Hour(), now.Minute(), now.Second())
 
 		fmt.Println(str)
 
-		fmt.Printf("timestamp:%d \n",now.Unix())
+		fmt.Printf("timestamp:%d \n", now.Unix())
 
-		fmt.Println("zjw",now.Format("2006-01-02 03:04:05"))
+		fmt.Println("zjw", now.Format("2006-01-02 03:04:05"))
 
 		time.Sleep(time.Second)
 
 		end := time.Now().UnixNano()
 
 		cost := (((end - start) / 1000) / 1000) / 1000
-		fmt.Printf("cost:%d s \n",cost)
+		fmt.Printf("cost:%d s \n", cost)
+
+		break
 	}
+
+	test1()
+
+	testMap()
+
+	testMapSlice()
+}
+
+func testMapSlice(){
+	s := make([]map[string]int,10)
+
+	for i := 0;i < len(s); i++{
+		s[i] = make(map[string]int,100)
+	}
+
+	s[0]["abc"] = 100
+	s[5]["abc"] = 200
+
+	fmt.Println(s)
+}
+
+func testMap(){
+	var a map[string]int
+	a = make(map[string]int,1000)
+	a["a"] = 0
+	a["b"] = 12
+	a["cd"] = 45
+
+	fmt.Println(a)
+
+	var keys []string
+	for k,v := range a {
+		fmt.Printf("a[%s] = %d \n",k,v)
+		keys = append(keys,k)
+	}
+
+	fmt.Println("")
+
+	sort.Strings(keys)
+	for _,k := range keys{
+		fmt.Printf("a[%s] = %d \n",k,a[k])
+	}
+
+
+	val,exists := a["cd"]
+	fmt.Printf("val=%d exist= %t \n",val,exists)
+
+	if exists{
+		fmt.Printf("val = %d \n",val)
+	} else{
+		fmt.Println("now found")
+	}
+
+	val = a["aaaa"]
+
+	fmt.Println(val)
+}
+
+
+func test1() {
+	fmt.Println("---------test1 start-------------------")
+	var a int
+	a = 10
+
+	fmt.Println(a)
+
+	var b *int
+	fmt.Printf("%p \n",&b)
+	fmt.Printf("%p \n",b)
+	fmt.Printf("%p \n",a)
+	fmt.Printf("%p \n",&a)
+
+	b = &a
+	fmt.Printf("%d \n",*b)
+
+	*b = 100
+	fmt.Printf("a = %d \n",a)
+
+	fmt.Println("---------test1 end-------------------")
+
+	testClosure()
+}
+
+func Adder() func(int) int{
+	var x int
+	f := func(i int) int {
+		x = x +i
+		return x
+	}
+
+	return f
+}
+
+func testClosure(){
+	f1 := Adder()
+
+	fmt.Println(f1(10))
+	fmt.Println(f1(20))
+	fmt.Println(f1(30))
 }
