@@ -8,7 +8,11 @@ import (
 	"math/rand"
 	"unicode/utf8"
 	"sort"
+	"encoding/json"
+	"inter"
 )
+
+
 
 func modify(a int) {
 	a = 10
@@ -66,6 +70,8 @@ func testSliceCap() {
 }
 
 func main() {
+	inter.TestInterface()
+
 	sum, _ := mypath.Add(100, 300)
 	fmt.Println(sum)
 
@@ -251,6 +257,26 @@ func main() {
 	testMap()
 
 	testMapSlice()
+
+	var i1 int
+	var f1 float32
+	var i32 int32
+	justify(i1,f1,i32)
+}
+
+func justify(items ... interface{}){
+	for index,v := range items{
+		switch v.(type){
+		case int:
+			fmt.Printf("第 %d 个参数 is int\n", index)
+		case int32:
+			fmt.Printf("第 %d 个参数 is int32\n", index)
+		case float32:
+			fmt.Printf("第 %d 个参数 is float32\n", index)
+		}
+
+
+	}
 }
 
 func testMapSlice(){
@@ -326,6 +352,80 @@ func test1() {
 	fmt.Println("---------test1 end-------------------")
 
 	testClosure()
+
+	testJson()
+
+	testPeople()
+
+	testMethod()
+}
+
+type People struct {
+	Name string
+	Age int
+}
+
+
+func (s *People) Set(name string,age int){
+	s.Name = name
+	s.Age = age
+}
+
+func testMethod(){
+	fmt.Println(" \n\n-------------------\n")
+	var s People
+	s.Set("zjw",120)
+	fmt.Println(s)
+}
+
+
+type Student1 struct {
+	Score int
+	People
+	Name string
+	int
+}
+
+func testPeople(){
+	var s Student1
+	s.Name = "zhw1"
+	s.People.Name = "p111"
+	s.Age = 200
+	s.Score = 100
+	s.int = 100
+
+	fmt.Printf("hhhhahahah   %#v \n",s,s.int)
+}
+
+
+type Student struct {
+	Name string `json:"name"`
+	Age int `json:"age"`
+	Sex string `json:sex`
+}
+
+func testJson(){
+	var a Student
+	a.Age = 27
+	a.Name = "zjw"
+	a.Sex = "man"
+
+	data,err := json.Marshal(a)
+	if err != nil{
+		fmt.Printf("json marshal failed,err:%v \n",err)
+		return
+	}
+
+	fmt.Printf("json data:%s \n",data)
+
+	var s1 Student
+	err = json.Unmarshal(data,&s1)
+	if err != nil{
+		fmt.Printf("json Unmarshal failed,err:%v \n",err)
+		return
+	}
+
+	fmt.Printf("s1:%#v \n",s1)
 }
 
 func Adder() func(int) int{
