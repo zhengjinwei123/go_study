@@ -274,8 +274,6 @@ func justify(items ... interface{}){
 		case float32:
 			fmt.Printf("第 %d 个参数 is float32\n", index)
 		}
-
-
 	}
 }
 
