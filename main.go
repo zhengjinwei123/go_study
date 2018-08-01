@@ -1,18 +1,16 @@
 package main
 
 import (
-	"mypath"
+	"encoding/json"
 	"fmt"
 	"goroute"
-	"time"
-	"math/rand"
-	"unicode/utf8"
-	"sort"
-	"encoding/json"
 	"inter"
+	"math/rand"
+	"mypath"
+	"sort"
+	"time"
+	"unicode/utf8"
 )
-
-
 
 func modify(a int) {
 	a = 10
@@ -184,7 +182,7 @@ func main() {
 
 	fmt.Println(s2)
 
-	var s3 [] int
+	var s3 []int
 	s3 = make([]int, 5)
 	var s4 []int = []int{10, 11, 13, 24}
 
@@ -261,12 +259,12 @@ func main() {
 	var i1 int
 	var f1 float32
 	var i32 int32
-	justify(i1,f1,i32)
+	justify(i1, f1, i32)
 }
 
-func justify(items ... interface{}){
-	for index,v := range items{
-		switch v.(type){
+func justify(items ...interface{}) {
+	for index, v := range items {
+		switch v.(type) {
 		case int:
 			fmt.Printf("第 %d 个参数 is int\n", index)
 		case int32:
@@ -277,11 +275,11 @@ func justify(items ... interface{}){
 	}
 }
 
-func testMapSlice(){
-	s := make([]map[string]int,10)
+func testMapSlice() {
+	s := make([]map[string]int, 10)
 
-	for i := 0;i < len(s); i++{
-		s[i] = make(map[string]int,100)
+	for i := 0; i < len(s); i++ {
+		s[i] = make(map[string]int, 100)
 	}
 
 	s[0]["abc"] = 100
@@ -290,9 +288,9 @@ func testMapSlice(){
 	fmt.Println(s)
 }
 
-func testMap(){
+func testMap() {
 	var a map[string]int
-	a = make(map[string]int,1000)
+	a = make(map[string]int, 1000)
 	a["a"] = 0
 	a["b"] = 12
 	a["cd"] = 45
@@ -300,25 +298,24 @@ func testMap(){
 	fmt.Println(a)
 
 	var keys []string
-	for k,v := range a {
-		fmt.Printf("a[%s] = %d \n",k,v)
-		keys = append(keys,k)
+	for k, v := range a {
+		fmt.Printf("a[%s] = %d \n", k, v)
+		keys = append(keys, k)
 	}
 
 	fmt.Println("")
 
 	sort.Strings(keys)
-	for _,k := range keys{
-		fmt.Printf("a[%s] = %d \n",k,a[k])
+	for _, k := range keys {
+		fmt.Printf("a[%s] = %d \n", k, a[k])
 	}
 
+	val, exists := a["cd"]
+	fmt.Printf("val=%d exist= %t \n", val, exists)
 
-	val,exists := a["cd"]
-	fmt.Printf("val=%d exist= %t \n",val,exists)
-
-	if exists{
-		fmt.Printf("val = %d \n",val)
-	} else{
+	if exists {
+		fmt.Printf("val = %d \n", val)
+	} else {
 		fmt.Println("now found")
 	}
 
@@ -326,7 +323,6 @@ func testMap(){
 
 	fmt.Println(val)
 }
-
 
 func test1() {
 	fmt.Println("---------test1 start-------------------")
@@ -336,16 +332,16 @@ func test1() {
 	fmt.Println(a)
 
 	var b *int
-	fmt.Printf("%p \n",&b)
-	fmt.Printf("%p \n",b)
-	fmt.Printf("%p \n",a)
-	fmt.Printf("%p \n",&a)
+	fmt.Printf("%p \n", &b)
+	fmt.Printf("%p \n", b)
+	fmt.Printf("%p \n", a)
+	fmt.Printf("%p \n", &a)
 
 	b = &a
-	fmt.Printf("%d \n",*b)
+	fmt.Printf("%d \n", *b)
 
 	*b = 100
-	fmt.Printf("a = %d \n",a)
+	fmt.Printf("a = %d \n", a)
 
 	fmt.Println("---------test1 end-------------------")
 
@@ -360,22 +356,20 @@ func test1() {
 
 type People struct {
 	Name string
-	Age int
+	Age  int
 }
 
-
-func (s *People) Set(name string,age int){
+func (s *People) Set(name string, age int) {
 	s.Name = name
 	s.Age = age
 }
 
-func testMethod(){
+func testMethod() {
 	fmt.Println(" \n\n-------------------\n")
 	var s People
-	s.Set("zjw",120)
+	s.Set("zjw", 120)
 	fmt.Println(s)
 }
-
 
 type Student1 struct {
 	Score int
@@ -384,7 +378,7 @@ type Student1 struct {
 	int
 }
 
-func testPeople(){
+func testPeople() {
 	var s Student1
 	s.Name = "zhw1"
 	s.People.Name = "p111"
@@ -392,51 +386,50 @@ func testPeople(){
 	s.Score = 100
 	s.int = 100
 
-	fmt.Printf("hhhhahahah   %#v \n",s,s.int)
+	fmt.Printf("hhhhahahah   %#v \n", s, s.int)
 }
-
 
 type Student struct {
 	Name string `json:"name"`
-	Age int `json:"age"`
-	Sex string `json:sex`
+	Age  int    `json:"age"`
+	Sex  string `json:sex`
 }
 
-func testJson(){
+func testJson() {
 	var a Student
 	a.Age = 27
 	a.Name = "zjw"
 	a.Sex = "man"
 
-	data,err := json.Marshal(a)
-	if err != nil{
-		fmt.Printf("json marshal failed,err:%v \n",err)
+	data, err := json.Marshal(a)
+	if err != nil {
+		fmt.Printf("json marshal failed,err:%v \n", err)
 		return
 	}
 
-	fmt.Printf("json data:%s \n",data)
+	fmt.Printf("json data:%s \n", data)
 
 	var s1 Student
-	err = json.Unmarshal(data,&s1)
-	if err != nil{
-		fmt.Printf("json Unmarshal failed,err:%v \n",err)
+	err = json.Unmarshal(data, &s1)
+	if err != nil {
+		fmt.Printf("json Unmarshal failed,err:%v \n", err)
 		return
 	}
 
-	fmt.Printf("s1:%#v \n",s1)
+	fmt.Printf("s1:%#v \n", s1)
 }
 
-func Adder() func(int) int{
+func Adder() func(int) int {
 	var x int
 	f := func(i int) int {
-		x = x +i
+		x = x + i
 		return x
 	}
 
 	return f
 }
 
-func testClosure(){
+func testClosure() {
 	f1 := Adder()
 
 	fmt.Println(f1(10))
