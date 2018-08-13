@@ -322,6 +322,8 @@ func testMap() {
 	val = a["aaaa"]
 
 	fmt.Println(val)
+
+	mypath.Add(1,1)
 }
 
 func test1() {
