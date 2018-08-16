@@ -1,44 +1,80 @@
 package main
 
 import (
-	"fmt"
 	"time"
+	"fmt"
 )
 
-func main() {
-	p := fmt.Println
-
+func testTime(){
 	now := time.Now()
-	p(now)
+	fmt.Printf("current time:%v \n",now)
 
-	then := time.Date(2009,1,1,11,30,20,111,time.UTC)
-	p(then)
+	year := now.Year()
+	month := now.Month()
+	day := now.Day()
+	hour := now.Hour()
+	minute := now.Minute()
+	send := now.Second()
 
-	p(then.Year())
-	p(then.Year())
-	p(then.Day())
-	p(then.Hour())
-	p(then.Minute())
-	p(then.Second())
-	p(then.Nanosecond())
-	p(then.Local())
-	p(then.Location())
-	p(then.Weekday())
-	p(then.ISOWeek())
+	fmt.Printf("%02d-%02d-%02d %02d:%02d:%02d \n",year,month,day,hour,minute,send)
+	timestamp := now.Unix()
+	fmt.Printf("timestamp is:%d \n",timestamp)
+}
 
-	p("--------------------------")
-	p(then.Before(now))
-	p(then.After(now))
-	p(then.Equal(now))
+func testTimestamp(timestamp int64){
+	timeObj := time.Unix(timestamp,0)
+	year := timeObj.Year()
+	month := timeObj.Month()
+	day := timeObj.Day()
 
-	diff := now.Sub(then)
-	p(diff)
+	hour := timeObj.Hour()
+	minute := timeObj.Minute()
+	second := timeObj.Second()
 
-	p(diff.Hours())
-	p(diff.Minutes())
-	p(diff.Seconds())
-	p(diff.Nanoseconds())
+	fmt.Printf("current timestamp :%d \n",timestamp)
+	fmt.Printf("%02d-%02d-%02d %02d:%02d:%02d \n",year,month,day,hour,minute,second)
+}
 
-	p(then.Add(diff))
-	p(then.Add(-diff))
+func processTask(){
+	fmt.Printf("do task \n")
+}
+
+func testTicker(){
+	ticker := time.Tick(1*time.Second)
+	for i:= range ticker{
+		fmt.Printf("%v \n",i)
+		processTask()
+	}
+}
+
+func testConst(){
+	fmt.Printf("nano second:%d \n",time.Nanosecond)
+	fmt.Printf("micro second:%d \n",time.Microsecond)
+	fmt.Printf("mili second:%d \n",time.Millisecond)
+	fmt.Printf("second:%d \n",time.Second)
+}
+
+func testFormat(){
+	now := time.Now()
+	timeStr := now.Format("2006/01/02 15:04:05")
+	fmt.Printf("time:%s \n",timeStr)
+}
+
+func testFotmat2(){
+	now := time.Now()
+	timeStr := fmt.Sprintf("%02d/%02d/%02d %02d:%02d:%02d",now.Year(),now.Month(),now.Day(),now.Hour(),now.Minute(),now.Second())
+	fmt.Printf("time:%s\n",timeStr)
+}
+
+func testCost(){
+	start := time.Now().UnixNano()
+	time.Sleep(10*time.Millisecond)
+	end := time.Now().UnixNano()
+	cost := (end - start) / 1000
+	fmt.Printf("code cost:%d us \n",cost)
+}
+
+
+func main(){
+	testConst()
 }
