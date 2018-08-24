@@ -7,25 +7,30 @@ import (
 	"html/template"
 	"log"
 	"path/filepath"
+	"time"
+	"crypto/md5"
+	"io"
+	"strconv"
+	"os"
 )
 
-func sayHelloName(w http.ResponseWriter,r *http.Request){
+func sayHelloName(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	fmt.Println(r.Form)
-	fmt.Println("path",r.URL.Path)
-	fmt.Println("schema",r.URL.Scheme)
+	fmt.Println("path", r.URL.Path)
+	fmt.Println("schema", r.URL.Scheme)
 	fmt.Println(r.Form["url_long"])
 
-	for k,v := range r.Form{
-		fmt.Println("key:",k)
-		fmt.Println("value:",strings.Join(v,""))
+	for k, v := range r.Form {
+		fmt.Println("key:", k)
+		fmt.Println("value:", strings.Join(v, ""))
 	}
-	fmt.Fprintf(w,"hello zjw")
+	fmt.Fprintf(w, "hello zjw")
 }
 
-func login(w http.ResponseWriter,r *http.Request){
+func login(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("method:", r.Method) //获取请求的方法
-	currentDir,err := filepath.Abs("./")
+	currentDir, err := filepath.Abs("./")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -37,19 +42,61 @@ func login(w http.ResponseWriter,r *http.Request){
 		t.Execute(w, nil)
 	} else {
 		//请求的是登录数据，那么执行登录的逻辑判断
+		r.ParseForm()
 		fmt.Println("username:", r.Form["username"])
 		fmt.Println("password:", r.Form["password"])
-		fmt.Fprintf(w,"login success")
+		fmt.Fprintf(w, "login success")
 	}
 }
 
+func upload(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("method:", r.Method)
 
-func main(){
-	http.HandleFunc("/",sayHelloName)
-	http.HandleFunc("/login",login)
+	currentDir, err := filepath.Abs("./")
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	err := http.ListenAndServe(":9090",nil)
-	if err != nil{
-		log.Fatal("ListenAndServe:",err)
+	if r.Method == "GET" {
+		crutime := time.Now().Unix()
+		h := md5.New()
+		io.WriteString(h, strconv.FormatInt(crutime, 10))
+		token := fmt.Sprintf("%x", h.Sum(nil))
+
+
+		t, _ := template.ParseFiles(currentDir + "/demo/array/v6/upload.gtpl")
+		t.Execute(w, token)
+	} else {
+		fmt.Println("hahahhaha")
+		maxMemory := 32 << 20
+		fmt.Println("maxMemory:",maxMemory)
+		r.ParseMultipartForm(int64(maxMemory))
+		file, handler, err := r.FormFile("uploadfile")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		defer file.Close()
+
+		fmt.Fprintf(w,"%v",handler.Header)
+
+		f,err := os.OpenFile(currentDir+"/demo/array/v6/"+handler.Filename,os.O_RDWR | os.O_CREATE,0666)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		defer f.Close()
+		io.Copy(f,file)
+	}
+}
+
+func main() {
+	http.HandleFunc("/", sayHelloName)
+	http.HandleFunc("/login", login)
+	http.HandleFunc("/upload", upload)
+
+	err := http.ListenAndServe(":9090", nil)
+	if err != nil {
+		log.Fatal("ListenAndServe:", err)
 	}
 }
