@@ -80,7 +80,9 @@ func upload(w http.ResponseWriter, r *http.Request) {
 
 		fmt.Fprintf(w,"%v",handler.Header)
 
-		f,err := os.OpenFile(currentDir+"/demo/array/v6/"+handler.Filename,os.O_RDWR | os.O_CREATE,0666)
+		f,err := os.OpenFile("./"+
+			handler.Filename,os.O_RDWR | os.O_CREATE,0666)
+
 		if err != nil {
 			fmt.Println(err)
 			return
