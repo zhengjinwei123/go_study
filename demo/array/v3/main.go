@@ -1,30 +1,32 @@
-package main
+package  main
 
 import (
 	"strconv"
 	"fmt"
 )
 
-type Element interface{}
+type Element interface {
 
-type List[] Element
+}
+
+type List []Element
 
 type Person struct {
 	name string
 	age int
 }
 
-func (p Person) String() string {
-	return "(name:"+p.name+" - age:"+strconv.Itoa(p.age)+" years)"
+func (p Person) String() string{
+	return "(name:"+p.name+" - age :"+strconv.Itoa(p.age)+" years)"
 }
 
 func main(){
 	list := make(List,3)
 	list[0] = 1
-	list[1] = "Hello"
+	list[1] = "hello"
 	list[2] = Person{
 		"Denis",
-		60,
+		50,
 	}
 
 	for index,element := range list {
@@ -36,7 +38,8 @@ func main(){
 		case Person:
 			fmt.Printf("list[%d] is a Person and its value is %s \n",index,value)
 		default:
-			fmt.Printf("list[%d] is of a diffrent type \n" ,index)
+			fmt.Printf("list[%d] is a different type \n",index)
 		}
 	}
 }
+

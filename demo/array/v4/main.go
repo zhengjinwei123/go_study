@@ -1,4 +1,4 @@
-package main
+package  main
 
 import (
 	"net/http"
@@ -14,17 +14,18 @@ func sayHelloName(w http.ResponseWriter,r *http.Request){
 	fmt.Println("schema",r.URL.Scheme)
 	fmt.Println(r.Form["url_long"])
 
-	for k,v := range r.Form{
+	for k,v := range r.Form {
 		fmt.Println("key:",k)
 		fmt.Println("val:",strings.Join(v,""))
 	}
-	fmt.Fprintf(w,"Hello zjw")
+	fmt.Fprintf(w,"hello zjw")
 }
+
 func main(){
 	http.HandleFunc("/",sayHelloName)
 	err := http.ListenAndServe(":9999",nil)
 
-	if err != nil{
+	if err != nil {
 		log.Fatal("ListenAndServe:",err)
 	}
 }

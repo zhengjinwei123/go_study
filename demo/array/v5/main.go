@@ -5,11 +5,11 @@ import (
 	"fmt"
 )
 
-type MyMux struct{
+type MyMux struct {
 
 }
 
-func (p *MyMux) ServeHTTP(w http.ResponseWriter,r *http.Request){
+func (p *MyMux) ServeHTTP (w http.ResponseWriter,r *http.Request){
 	if r.URL.Path == "/" {
 		sayHelloName(w,r)
 		return
@@ -26,5 +26,4 @@ func sayHelloName(w http.ResponseWriter,r *http.Request){
 func main(){
 	mux := &MyMux{}
 	http.ListenAndServe(":9999",mux)
-
 }
