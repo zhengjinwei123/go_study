@@ -2,4 +2,4 @@ beego-demo/
 mygoblog/
 *.exe
 *.a
-beegoProj/conf/app.conf
+beegoProj/conf/
