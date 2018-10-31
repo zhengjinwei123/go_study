@@ -2,3 +2,4 @@ beego-demo/
 mygoblog/
 *.exe
 *.a
+*.conf
