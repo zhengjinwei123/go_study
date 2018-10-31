@@ -3,6 +3,7 @@ package models
 import (
 	"github.com/astaxie/beego/orm"
 	"time"
+	"fmt"
 )
 
 /**
@@ -66,4 +67,8 @@ func (this *User) Delete() error {
 
 func (this *User) Query() orm.QuerySeter {
 	return orm.NewOrm().QueryTable(this)
+}
+
+func (this *User) String() string {
+	return fmt.Sprintf("[id=%d \n userName=%s \n password=%s \n\n]",this.Id,this.UserName,this.Password)
 }
