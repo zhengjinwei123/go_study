@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c68ac6d-0d1d-47e9-a85d-991b93e5cdd8" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/beegoProj/conf/app.conf" beforeDir="false" afterPath="$PROJECT_DIR$/src/beegoProj/conf/app.conf" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -86,7 +85,7 @@
         <entry file="file://$PROJECT_DIR$/src/beegoProj/conf/app.conf">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="168">
-              <caret line="8" column="25" lean-forward="true" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+              <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -461,12 +460,12 @@
       <workItem from="1540376401268" duration="179000" />
       <workItem from="1540803738225" duration="34000" />
       <workItem from="1540804011650" duration="495000" />
-      <workItem from="1540804580000" duration="35531000" />
+      <workItem from="1540804580000" duration="35617000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180314000" />
+    <option name="totallyTimeSpent" value="180400000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -897,7 +896,7 @@
     <entry file="file://$PROJECT_DIR$/src/beegoProj/conf/app.conf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
-          <caret line="8" column="25" lean-forward="true" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
         </state>
       </provider>
     </entry>
