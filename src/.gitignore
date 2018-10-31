@@ -1,4 +1,4 @@
-beego-demo
-mygoblog
+beego-demo/
+mygoblog/
 *.exe
 *.a

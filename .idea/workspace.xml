@@ -1,30 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6c68ac6d-0d1d-47e9-a85d-991b93e5cdd8" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/go.imports.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/beegoProj/models/user.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/beegoProj/utils/crypto.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mygoblog/controllers/admin/account.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mygoblog/controllers/admin/article.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mygoblog/controllers/admin/base.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mygoblog/models/base.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mygoblog/models/option.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mygoblog/models/option/option.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mygoblog/models/post.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mygoblog/models/tag.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mygoblog/models/tagpost.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mygoblog/models/user.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mygoblog/util/cache.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mygoblog/util/factory.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mygoblog/util/functions.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mygoblog/util/pager.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mygoblog/util/singleton/singleton.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beego-demo/conf/app.conf" beforeDir="false" afterPath="$PROJECT_DIR$/src/beego-demo/conf/app.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beegoProj/conf/app.conf" beforeDir="false" afterPath="$PROJECT_DIR$/src/beegoProj/conf/app.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beegoProj/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/beegoProj/main.go" afterDir="false" />
-    </list>
+    <list default="true" id="6c68ac6d-0d1d-47e9-a85d-991b93e5cdd8" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,8 +36,8 @@
       <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/beegoProj/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+            <state relative-caret-position="273">
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
               <folding>
                 <element signature="e#14#142#0" expanded="true" />
               </folding>
@@ -453,15 +430,16 @@
       <workItem from="1540376401268" duration="179000" />
       <workItem from="1540803738225" duration="34000" />
       <workItem from="1540804011650" duration="495000" />
-      <workItem from="1540804580000" duration="29977000" />
+      <workItem from="1540804580000" duration="30525000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="174760000" />
+    <option name="totallyTimeSpent" value="175308000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -890,8 +868,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/beegoProj/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+        <state relative-caret-position="273">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
           <folding>
             <element signature="e#14#142#0" expanded="true" />
           </folding>
