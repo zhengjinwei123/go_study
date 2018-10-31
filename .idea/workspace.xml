@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c68ac6d-0d1d-47e9-a85d-991b93e5cdd8" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/beegoProj/conf/app.conf" beforeDir="false" afterPath="$PROJECT_DIR$/src/beegoProj/conf/app.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beegoProj/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/beegoProj/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beegoProj/models/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/beegoProj/models/user.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/beegoProj/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="22" column="26" lean-forward="true" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+            <state relative-caret-position="357">
+              <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
               <folding>
                 <element signature="e#14#142#0" expanded="true" />
               </folding>
@@ -84,11 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.conf" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.conf" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/beegoProj/conf/app.conf">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+            <state relative-caret-position="168">
+              <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -199,9 +196,9 @@
         <option value="$PROJECT_DIR$/src/mygoblog/controllers/admin/article.go" />
         <option value="$PROJECT_DIR$/src/mygoblog/main.go" />
         <option value="$PROJECT_DIR$/src/beegoProj/utils/crypto.go" />
-        <option value="$PROJECT_DIR$/src/beegoProj/conf/app.conf" />
         <option value="$PROJECT_DIR$/src/beegoProj/models/user.go" />
         <option value="$PROJECT_DIR$/src/beegoProj/main.go" />
+        <option value="$PROJECT_DIR$/src/beegoProj/conf/app.conf" />
       </list>
     </option>
   </component>
@@ -250,6 +247,13 @@
               <item name="go_study" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="beegoProj" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="go_study" type="b2602c69:ProjectViewProjectNode" />
+              <item name="go_study" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="beegoProj" type="462c0819:PsiDirectoryNode" />
+              <item name="conf" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="go_study" type="b2602c69:ProjectViewProjectNode" />
@@ -456,12 +460,12 @@
       <workItem from="1540376401268" duration="179000" />
       <workItem from="1540803738225" duration="34000" />
       <workItem from="1540804011650" duration="495000" />
-      <workItem from="1540804580000" duration="34989000" />
+      <workItem from="1540804580000" duration="35199000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="179772000" />
+    <option name="totallyTimeSpent" value="179982000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -844,13 +848,6 @@
     <entry file="file://$PROJECT_DIR$/src/beegoProj/controllers/default.go">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beegoProj/conf/app.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/beego-demo/conf/app.conf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
@@ -888,11 +885,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/beegoProj/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="22" column="26" lean-forward="true" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+        <state relative-caret-position="357">
+          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
           <folding>
             <element signature="e#14#142#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beegoProj/conf/app.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
         </state>
       </provider>
     </entry>
