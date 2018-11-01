@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"runtime"
 	"path/filepath"
-	"os"
 	"newsCaptorsTask/util"
 )
 
@@ -18,13 +17,10 @@ func GetCurDir() string {
 }
 
 func main() {
-	p,err := util.GetFilePath("./conf/app.ini")
+	_,err := util.GetFilePath("./conf/app.ini")
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(p)
-
-	fmt.Println(os.Getwd())
 	conf := fileParser.SetConfig(GetCurDir() + "/conf/app.ini")
 
 	fmt.Println(conf.GetValue("mysql","port"))
