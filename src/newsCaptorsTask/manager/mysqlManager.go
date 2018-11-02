@@ -1,4 +1,4 @@
-package global
+package manager
 
 import (
 	_ "github.com/go-sql-driver/mysql"

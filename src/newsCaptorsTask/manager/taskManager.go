@@ -1,4 +1,4 @@
-package global
+package manager
 
 import (
 	"newsCaptorsTask/task"

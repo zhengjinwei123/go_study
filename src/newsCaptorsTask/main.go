@@ -3,7 +3,7 @@ package main
 import (
 	"newsCaptorsTask/util/spider"
 	"newsCaptorsTask/config"
-	_ "newsCaptorsTask/global"
+	_ "newsCaptorsTask/manager"
 	"time"
 )
 
