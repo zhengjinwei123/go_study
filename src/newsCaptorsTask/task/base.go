@@ -2,7 +2,6 @@ package task
 
 import (
 	"github.com/robfig/cron"
-	"fmt"
 )
 
 type Base struct {
@@ -15,20 +14,15 @@ func (this *Base) Init(){
 
 }
 
-func (this *Base) Run(){
+func (this *Base) Run(worker func()){
 	for _,spec := range this.CronList {
-		fmt.Println(spec)
 		go func(spec string,that *Base){
 			newCron := cron.New()
 			newCron.AddFunc(spec, func() {
-				that.Worker()
+				worker()
 			})
 			newCron.Start()
 		}(spec,this)
 	}
-}
-
-func (this *Base) Worker(){
-	fmt.Println("base worker")
 }
 

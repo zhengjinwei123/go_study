@@ -10,5 +10,5 @@ func init(){
 	csdnTask := new(task.CSDN)
 	csdnTask.TaskName = "csdn"
 	csdnTask.Init()
-	csdnTask.Run()
+	csdnTask.Run(csdnTask.Worker)
 }
