@@ -6,10 +6,11 @@ import (
 	"newsCaptorsTask/model"
 	//"fmt"
 	//"time"
+	"newsCaptorsTask/config"
 )
 
 func init() {
-	conf := AppConf()
+	conf := config.AppConf()
 
 	port := conf.GetValue("mysql","port")
 	host := conf.GetValue("mysql","host")
