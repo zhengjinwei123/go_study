@@ -6,7 +6,6 @@ import (
 )
 
 
-
 func main() {
 	conf := global.AppConf()
 	fmt.Println(conf.GetValue("mysql","port"))
