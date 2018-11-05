@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	time.Sleep(time.Hour*24*360*100)
+	time.Sleep(time.Hour * 24 * 360 * 100)
 }

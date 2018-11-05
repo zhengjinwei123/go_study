@@ -7,8 +7,8 @@ import (
 
 var C *fileParser.Config
 
-func init(){
-	p,err := util.GetFilePath("../conf/app.ini")
+func init() {
+	p, err := util.GetFilePath("../conf/app.ini")
 	if err != nil {
 		panic(err)
 	}
@@ -18,5 +18,3 @@ func init(){
 func AppConf() *fileParser.Config {
 	return C
 }
-
-

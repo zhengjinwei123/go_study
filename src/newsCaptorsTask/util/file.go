@@ -8,23 +8,23 @@ import (
 	"errors"
 )
 
-func GetFilePath(resolvePath string) (string,error){
+func GetFilePath(resolvePath string) (string, error) {
 	if resolvePath == "" {
 		panic("GetFilePath params is empty")
 	}
-	_,file,_,ok := runtime.Caller(1)
+	_, file, _, ok := runtime.Caller(1)
 	if !ok {
 		panic("GetFilePath error")
 	}
 
-	resolvePathList := strings.Split(resolvePath,"/")
+	resolvePathList := strings.Split(resolvePath, "/")
 
 	var oneDot int = 0
 	var twoDot int = 0
 
-	var twoDotList []int = make([]int,20)
+	var twoDotList []int = make([]int, 20)
 	if len(resolvePathList) != 0 {
-		for k,v := range resolvePathList {
+		for k, v := range resolvePathList {
 			if v == "." {
 				if k == 0 {
 					oneDot ++
@@ -40,7 +40,6 @@ func GetFilePath(resolvePath string) (string,error){
 		}
 	}
 
-
 	// 获取调用文件所在目录
 	fileDir := filepath.Dir(file)
 
@@ -48,14 +47,14 @@ func GetFilePath(resolvePath string) (string,error){
 		if oneDot != 0 && oneDot > 1 {
 			panic("invalid path")
 		} else {
-			for _,v := range resolvePathList {
+			for _, v := range resolvePathList {
 				if v != "." {
-					fileDir += "\\"+v
+					fileDir += "\\" + v
 				}
 			}
 		}
 	} else {
-		for _,v := range twoDotList {
+		for _, v := range twoDotList {
 			_ = v
 			if v == 0 {
 				break
@@ -63,19 +62,19 @@ func GetFilePath(resolvePath string) (string,error){
 			fileDir = filepath.Dir(fileDir)
 		}
 
-		for _,v := range resolvePathList {
-			if v != ".."  && v != "." {
-				fileDir += "\\"+v
+		for _, v := range resolvePathList {
+			if v != ".." && v != "." {
+				fileDir += "\\" + v
 			}
 		}
 	}
 
-	_,err := PathExists(fileDir)
+	_, err := PathExists(fileDir)
 	if err != nil {
 		panic(err)
 	}
 
-	return fileDir,nil
+	return fileDir, nil
 }
 
 func PathExists(path string) (bool, error) {

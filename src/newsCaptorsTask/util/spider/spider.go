@@ -5,13 +5,14 @@ import (
 	"fmt"
 	"net/http/httputil"
 )
+
 type MatchReg func() int
 
 type Spider struct {
 	RawUrl      string
-	Url         string // 页面地址
-	MatchFunc   MatchReg  // 正则表达式
-	PageContent string // 页面内容
+	Url         string   // 页面地址
+	MatchFunc   MatchReg // 正则表达式
+	PageContent string   // 页面内容
 }
 
 func (s *Spider) GetPage(url string) error {

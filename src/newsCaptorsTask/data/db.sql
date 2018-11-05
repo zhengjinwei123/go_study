@@ -1,9 +1,13 @@
 use `newscaptor`
 CREATE TABLE `t_captorinfo` (
-  `id` bigint unsigned not null auto_increment,
-  `url` varchar(255) not null default '' comment '链接地址',
-  `createAt` datetime not null default CURRENT_TIMESTAMP,
-  `updateAt` datetime not null default CURRENT_TIMESTAMP on update  CURRENT_TIMESTAMP,
-  primary key (`id`),
-  key `idx_createAt` (`createAt`)
-)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `url` varchar(255) NOT NULL DEFAULT '' COMMENT '链接地址',
+  `keyword` varchar(255) NOT NULL DEFAULT '' COMMENT '关键字',
+  `desc` varchar(255) NOT NULL DEFAULT '' COMMENT '描述',
+  `createAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uniq_url_desc` (`url`,`desc`),
+  KEY `idx_createAt` (`createAt`),
+  KEY `idx_keyword` (`keyword`)
+) ENGINE=InnoDB AUTO_INCREMENT=1230 DEFAULT CHARSET=utf8
