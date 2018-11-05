@@ -8,8 +8,10 @@ import (
 
 
 type CaptorInfo struct {
-	Id int
+	Id int `orm:"pk"`
 	Url string `orm:"size(255)"`
+	Desc string `orm:"size(255)"`
+	Keyword string `orm:"size(255)"`
 	Createat time.Time `orm:"type(datetime)"`
 	Updateat time.Time `orm:"type(datetime)"`
 }

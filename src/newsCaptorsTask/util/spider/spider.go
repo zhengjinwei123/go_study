@@ -5,20 +5,21 @@ import (
 	"fmt"
 	"net/http/httputil"
 )
+type MatchReg func() int
 
 type Spider struct {
+	RawUrl      string
 	Url         string // 页面地址
-	Reg         string // 正则表达式
+	MatchFunc   MatchReg  // 正则表达式
 	PageContent string // 页面内容
-	ResultList  []string // 结果列表
 }
 
-func (s *Spider) GetPage() error {
+func (s *Spider) GetPage(url string) error {
 	if s.Url == "" {
 		panic("invalid url")
 	}
 
-	req, err := http.NewRequest(http.MethodGet, s.Url, nil)
+	req, err := http.NewRequest(http.MethodGet, url, nil)
 	if err != nil {
 		panic(err)
 	}
@@ -45,10 +46,10 @@ func (s *Spider) GetPage() error {
 	return nil
 }
 
+/**
+处理正则
+ */
 func (s *Spider) ProcessPage() error {
-	if s.Reg == "" {
-		panic("invalid reg")
-	}
-
+	s.MatchFunc()
 	return nil
 }

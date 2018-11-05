@@ -7,9 +7,11 @@ import (
 	//"fmt"
 	//"time"
 	"newsCaptorsTask/config"
+	"fmt"
 )
 
 func init() {
+	fmt.Println("-----------------mysql init called ")
 	conf := config.AppConf()
 
 	port := conf.GetValue("mysql","port")
