@@ -8,7 +8,6 @@ import (
 	"regexp"
 	"strconv"
 	"newsCaptorsTask/model"
-	"fmt"
 	"time"
 	"net/url"
 )
@@ -34,11 +33,12 @@ func (this *CSDN) Worker(keyWord string) {
 		PageContent: "",
 	}
 
+
 	spy.MatchFunc = func() int {
 		exp := regexp.MustCompile(`<dl class="search-list J_search">\r\n+\s+<dt>\r\n+\s+<a href="(.*?)" target="_blank" strategy="SearchFromCsdn">(.*?)</a>`)
 		result := exp.FindAllStringSubmatch(spy.PageContent, -1)
 
-		log.Println("match func called:" + strconv.Itoa(this.PageNum))
+		//log.Println("match func called:" + strconv.Itoa(this.PageNum))
 		for _, v := range result {
 			res := new(ResultType)
 			for key, value := range v {
@@ -86,4 +86,7 @@ func (this *CSDN) InsertToDB(keyWord string) {
 			continue
 		}
 	}
+
+	// Clear slice
+	this.ResultList = append([]*ResultType{})
 }
