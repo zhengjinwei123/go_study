@@ -102,7 +102,6 @@ func (this *JadeLogger) flushDir(){
 	diffSec := util.TimeSecDiff(str,this.curDateTimeStr+" 00:00:00")
 
 	if diffSec == 0 {
-		fmt.Println("-----------------------------------")
 		return
 	}
 
