@@ -6,6 +6,7 @@ import (
 	"path/filepath"
 	"os"
 	"errors"
+	"fmt"
 )
 
 func GetFilePath(resolvePath string) (string, error) {
@@ -83,7 +84,9 @@ func PathExists(path string) (bool, error) {
 		return true, nil
 	}
 	if os.IsNotExist(err) {
+
 		return false, errors.New(path + " is not a valid file")
 	}
+	fmt.Println("err:",err)
 	return false, err
 }
