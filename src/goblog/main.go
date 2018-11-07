@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/orm"
+	_ "github.com/astaxie/beego/orm"
 	"github.com/lisijie/goblog/controllers/admin"
 	"github.com/lisijie/goblog/controllers/blog"
 	"github.com/lisijie/goblog/models"
@@ -20,7 +20,7 @@ func init() {
 
 func main() {
 	if beego.AppConfig.String("runmode") == "dev" {
-		orm.Debug = true
+		//orm.Debug = true
 	}
 
 	//前台路由
