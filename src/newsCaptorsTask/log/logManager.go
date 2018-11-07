@@ -1,4 +1,4 @@
-package manager
+package log
 
 import (
 	"github.com/op/go-logging"
@@ -114,8 +114,6 @@ func (this *JadeLogger) flushDir(){
 		this.SetType(this.logType)
 	}
 }
-
-
 
 
 func MyLogger(logType string) *JadeLogger{

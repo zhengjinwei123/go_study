@@ -2,13 +2,14 @@ package manager
 
 import (
 	"newsCaptorsTask/task"
+	"newsCaptorsTask/log"
 	"net/url"
 	"newsCaptorsTask/model"
 	"newsCaptorsTask/config"
 )
 
 func init(){
-	log := MyLogger("captor")
+	log := log.MyLogger("captor")
 
 	log.Debug("task Manager init")
 	csdnTask := new(task.CSDN)
@@ -19,8 +20,8 @@ func init(){
 	hobby.Type = config.EHOBBY_TYPE_CSDN
 
 	var hobbyList []*model.Hobby
-	t,err := hobby.Query().All(&hobbyList)
-	if err == nil && t > 0 {
+	hasData := hobby.FindAll(&hobbyList)
+	if hasData {
 		for _,v := range hobbyList {
 			hb := (*v).Hobby
 			log.Debug("task process csdn task,hobby:",hb)

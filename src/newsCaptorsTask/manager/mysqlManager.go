@@ -5,11 +5,12 @@ import (
 	"github.com/astaxie/beego/orm"
 	"newsCaptorsTask/model"
 	"newsCaptorsTask/config"
+	"newsCaptorsTask/log"
 )
 
 
 func init() {
-	log := MyLogger("mysq")
+	log := log.MyLogger("mysq")
 
 	log.Debug("-----------------mysql init called---------------")
 	conf := config.AppConf()

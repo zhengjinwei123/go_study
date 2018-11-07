@@ -53,6 +53,14 @@ func (m *CaptorInfo) Query() orm.QuerySeter {
 	return orm.NewOrm().QueryTable(m)
 }
 
+func (m *CaptorInfo) FindAll(container interface{}) bool{
+	t,err := m.Query().All(container)
+	if err == nil && t > 0 {
+		return true
+	}
+	return false
+}
+
 func (m *CaptorInfo) ToJsonString() string {
 	data,_ := json.Marshal(m)
 	return string(data)

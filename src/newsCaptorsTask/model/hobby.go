@@ -4,6 +4,7 @@ import (
 	"time"
 	"github.com/astaxie/beego/orm"
 	"encoding/json"
+	_ "fmt"
 )
 
 
@@ -50,6 +51,15 @@ func (m *Hobby) Delete() error {
 
 func (m *Hobby) Query() orm.QuerySeter {
 	return orm.NewOrm().QueryTable(m)
+}
+
+
+func (m *Hobby) FindAll(container interface{}) bool{
+	t,err := m.Query().All(container)
+	if err == nil && t > 0 {
+		return true
+	}
+	return false
 }
 
 func (m *Hobby) ToJsonString() string {

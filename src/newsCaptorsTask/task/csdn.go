@@ -10,12 +10,15 @@ import (
 	"newsCaptorsTask/model"
 	"time"
 	"net/url"
+	mylog "newsCaptorsTask/log"
 )
 
 type CSDN struct {
 	Base
 	PageNum int
 }
+
+
 
 func (this *CSDN) Init() {
 	log.Println("csdn init")
@@ -83,6 +86,7 @@ func (this *CSDN) InsertToDB(keyWord string) {
 		}
 		err := m.Insert()
 		if err != nil {
+			mylog.MyLogger("task").Debug("csdn task insert db err:",err)
 			continue
 		}
 	}
