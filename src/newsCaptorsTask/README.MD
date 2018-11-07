@@ -17,3 +17,10 @@
 3. colly
 4. hu17889/go_spider
 ```
+
+### 三, 安装步骤
+``` css
+1. go get github.com/Masterminds/glide
+2. cd gopath/src/newsCaptorTask
+3. glide up -v
+```
