@@ -1,7 +1,6 @@
 package main
 
 import (
-	_ "newsCaptorsTask/manager"
 	"time"
 	"newsCaptorsTask/manager"
 )
