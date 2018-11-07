@@ -6,9 +6,9 @@ import (
 	"newsCaptors/util/singleton"
 )
 
-var Fatory fatory
+var Factory fatory
 func init(){
-	Fatory.instances = make(map[string]singleton.Singleton)
+	Factory.instances = make(map[string]singleton.Singleton)
 }
 
 type fatory struct {

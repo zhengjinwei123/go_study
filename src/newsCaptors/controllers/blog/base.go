@@ -2,7 +2,8 @@ package blog
 
 import (
 	"github.com/astaxie/beego"
-	"goblog/util"
+	"newsCaptors/util"
+	"strings"
 )
 
 type baseController struct {
@@ -10,10 +11,15 @@ type baseController struct {
 	moduleName string
 	controllerName string
 	actionName string
-	options map[string]string
-	cache *util.LruCache
+	//options map[string]string
+	cache *util.LRUCache
 }
 
 func (this *baseController) Prepare(){
-
+	controllerName,actionName := this.GetControllerAndAction()
+	this.moduleName = "blog"
+	this.controllerName = strings.ToLower(controllerName[0 : len(controllerName)-10])
+	this.actionName = strings.ToLower(actionName)
+	cache, _ := util.Factory.Get("cache")
+	this.cache = cache.(*util.LRUCache)
 }
