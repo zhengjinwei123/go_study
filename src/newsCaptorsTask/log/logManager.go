@@ -87,6 +87,7 @@ func (this *JadeLogger) Warning(args ...interface{}) {
 }
 
 func (this *JadeLogger) Error(args ...interface{}) {
+	this.flushDir()
 	this.log.Error(this.prefix(),args)
 }
 
