@@ -11,13 +11,12 @@ import (
 
 var g_filePath string
 
+var g_mapLogger map[string]*JadeLogger
+
 func init(){
 	g_filePath,_ = util.GetFilePath(config.AppConf().GetValue("log","output"))
+	g_mapLogger = make(map[string]*JadeLogger,20)
 }
-
-
-
-
 
 var format = logging.MustStringFormatter(
 	`%{color}%{time:15:04:05.000} %{shortfunc} ▶ %{level:.4s} %{id:03x}%{color:reset} %{message}`,
@@ -68,7 +67,7 @@ func (this *JadeLogger) SetType (logType string) *JadeLogger{
 	return this
 }
 
-func (this *JadeLogger) GetLogger() *JadeLogger{
+func (this *JadeLogger) getLogger() *JadeLogger{
 	this.log = logging.MustGetLogger("example")
 	return this
 }
@@ -116,3 +115,14 @@ func (this *JadeLogger) flushDir(){
 	}
 }
 
+
+
+
+func MyLogger(logType string) *JadeLogger{
+	_log,ok := g_mapLogger[logType]
+	if !ok {
+		g_mapLogger[logType] = new(JadeLogger).SetType(logType).getLogger()
+		return g_mapLogger[logType]
+	}
+	return _log
+}

@@ -4,14 +4,14 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/astaxie/beego/orm"
 	"newsCaptorsTask/model"
-	//"fmt"
-	//"time"
 	"newsCaptorsTask/config"
-	"fmt"
 )
 
+
 func init() {
-	fmt.Println("-----------------mysql init called ")
+	log := MyLogger("mysq")
+
+	log.Debug("-----------------mysql init called---------------")
 	conf := config.AppConf()
 
 	port := conf.GetValue("mysql","port")
@@ -27,9 +27,9 @@ func init() {
 	if err != nil {
 		panic(err)
 	}
-	orm.RegisterModel(new(model.CaptorInfo))
+	orm.RegisterModel(new(model.CaptorInfo),new(model.Hobby))
 	orm.RunCommand()
-	//fmt.Println("mysql connection success,url:",url)
+
 	//captor := new(model.CaptorInfo)
 	////captor.Id = 2
 	////captor.Url = "http://www.baidu.com"

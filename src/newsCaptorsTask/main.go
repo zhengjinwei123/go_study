@@ -6,13 +6,9 @@ import (
 	"newsCaptorsTask/manager"
 )
 
-var log *manager.JadeLogger
-
-func init(){
-	log = new(manager.JadeLogger).SetType("captor").GetLogger()
-}
 
 func main() {
+	log := manager.MyLogger("captor")
 	log.Debug("task server run.")
 	time.Sleep(time.Hour * 24 * 360 * 100)
 }
