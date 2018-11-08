@@ -1,10 +1,10 @@
 package routers
 
 import (
-	"newsCaptors/controllers"
+	"newsCaptors/controllers/blog"
 	"github.com/astaxie/beego"
 )
 
 func init() {
-    beego.Router("/", &controllers.MainController{})
+	beego.Router("/",&blog.IndexController{},"*:Index")
 }

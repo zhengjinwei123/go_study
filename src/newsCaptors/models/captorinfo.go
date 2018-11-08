@@ -17,7 +17,7 @@ type CaptorInfo struct {
 }
 
 func (m *CaptorInfo) TableName() string {
-	return "t_captorinfo"
+	return TableName("captorinfo")
 }
 
 func (m *CaptorInfo) Insert() error {

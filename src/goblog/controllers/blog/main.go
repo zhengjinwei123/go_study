@@ -38,7 +38,6 @@ func (this *MainController) Index() {
 	this.Data["count"] = count
 	this.Data["list"] = list
 	this.Data["pagebar"] = util.NewPager(page, int(count), pagesize, "").ToString()
-	fmt.Println("zjw-------------------",util.NewPager(page, int(count), pagesize, "").ToString())
 	this.setHeadMetas()
 	this.display("index")
 }
